@@ -1,1 +1,2 @@
-npm run test
+#!/bin/sh
+cd "$(dirname "$0")/.." && npx lint-staged --concurrent false

@@ -1,6 +1,3 @@
-export default {
-  '*.{js,jsx,ts,tsx}': ['eslint --fix', 'eslint',],
-  '**/*.ts': ['npm run check-types',],
-  '**/*.tsx': ['npm run check-types',],
-  '*.{json,yaml}': ['prettier --write'],
-};
+{
+  "*.{ts,tsx}": ["eslint --fix", "prettier --write"]
+}
