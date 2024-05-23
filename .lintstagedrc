@@ -1,0 +1,6 @@
+{
+  '*.{js,jsx,ts,tsx}': ['eslint --fix', 'eslint',],
+  '**/*.ts': ['npm run check-types',],
+  '**/*.tsx': ['npm run check-types',],
+  '*.{json,yaml}': ['prettier --write'],
+};
