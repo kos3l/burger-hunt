@@ -49,11 +49,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "prettier --write . && git add -A ."
     }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "src/**/*.{js,jsx,ts,tsx,css}": "prettier --write --ignore-unknown"
   }
 }
