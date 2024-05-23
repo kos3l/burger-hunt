@@ -18,7 +18,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            meows3
+            meows3 eeee eee
             <Image
               src={Zdjecie}
               alt="Vercel Logo"
