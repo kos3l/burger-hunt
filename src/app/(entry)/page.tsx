@@ -1,5 +1,4 @@
 import Image from 'next/image';
-
 import Zdjecie from '@/public/next.svg';
 
 export default function Home() {
