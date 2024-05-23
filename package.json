@@ -13,7 +13,6 @@
   },
   "type": "module",
   "dependencies": {
-    "husky": "^9.0.11",
     "next": "14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -39,6 +38,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-tailwindcss": "^3.17.0",
     "eslint-plugin-unused-imports": "^3.2.0",
+    "husky": "^9.0.11",
     "lint-staged": "^15.2.4",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.38",
@@ -51,5 +51,20 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "eslint"
+    ],
+    "**/*.ts": [
+      "npm run check-types"
+    ],
+    "**/*.tsx": [
+      "npm run check-types"
+    ],
+    "*.{json,yaml}": [
+      "prettier --write"
+    ]
   }
 }
