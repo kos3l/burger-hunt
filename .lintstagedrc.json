@@ -1,5 +1,5 @@
 {
-  "*.{js,jsx,ts,tsx}": ["eslint --fix", "eslint"],
+  "*.{js,jsx,ts,tsx}": ["eslint --fix", "eslint", "prettier --write"],
   "**/*.tsx": ["npm run check-types"],
   "**/*.ts": ["npm run check-types"],
   "*.{json,yaml}": ["prettier --write"]
