@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#overlay {
+  background-image: url('/svg/topography.svg');
+  mix-blend-mode: overlay;
+}
+#gradient {
+  background: rgb(15, 118, 110);
+  background: radial-gradient(
+    circle,
+    rgba(15, 118, 110, 1) 0%,
+    rgba(15, 23, 42, 1) 100%
+  );
+}

@@ -11,7 +11,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${RobotoMono.variable} ${Rubik.variable} font-sans`}>
+      <body
+        className={`${RobotoMono.variable} ${Rubik.variable} relative flex h-dvh flex-col bg-sky-950 font-sans`}
+      >
+        <div
+          id="overlay"
+          className="pointer-events-none fixed left-0 top-0 z-10 size-full"
+        />
+        <div
+          id="gradient"
+          className="pointer-events-none fixed left-0 top-0 z-10 size-full opacity-40 mix-blend-screen"
+        />
         {children}
       </body>
     </html>

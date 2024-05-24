@@ -30,7 +30,11 @@
     ],
     "paths": {
       "@/public/*": ["./public/*"],
-      "@/src/*": ["./src/*"]
+      "@/src/*": ["./src/*"],
+      "@/components/*": ["./src/app/(public)/_components/*"],
+      "@/public-pages/*": ["./src/app/(public)/*"],
+      "@/auth-pages/*": ["./src/app/(protected)/*"],
+      "@/protected-pages/*": ["./src/app/(auth)/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

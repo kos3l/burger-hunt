@@ -1,8 +1,9 @@
 function HomeComposition() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-4 p-24">
-      <p className="font-sans text-2xl">Home</p>
-      <p className="font-mono text-2xl">Home</p>
+    <main className="z-20 flex grow flex-col items-start justify-center gap-4">
+      <div className="h-[50rem] w-[30rem] rounded-md bg-amber-50 p-4">
+        <div className="size-24 rounded-md bg-orange-400" />
+      </div>
     </main>
   );
 }
