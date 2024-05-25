@@ -1,3 +1,4 @@
-const restaurantSearchQueryKeys = ['restaurant', 'search'];
+const restaurantSearchAddressQueryKeys = ['restaurant', 'search', 'address'];
+const restaurantSearchLocationQueryKeys = ['restaurant', 'search', 'location'];
 
-export { restaurantSearchQueryKeys };
+export { restaurantSearchAddressQueryKeys, restaurantSearchLocationQueryKeys };

@@ -1,4 +1,5 @@
-import { OpeningHours } from '../../opening-hours/entity/OpeningHours';
+import { ReviewImage } from '@/domain/image/entity/ReviewImage';
+import { OpeningHours } from '@/domain/opening-hours/entity/OpeningHours';
 
 type Restaurant = {
   id: string;
@@ -15,6 +16,7 @@ type Restaurant = {
   openingHours: OpeningHours;
   upvotes: number;
   downvotes: number;
+  thumbnail?: ReviewImage;
 };
 
 export { type Restaurant };

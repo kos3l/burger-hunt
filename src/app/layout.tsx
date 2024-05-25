@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-stone-400">
       <body
-        className={`${RobotoMono.variable} ${Rubik.variable} relative flex min-h-dvh w-full flex-col overflow-auto overscroll-none scroll-smooth font-mono antialiased`}
+        className={`${RobotoMono.variable} ${Rubik.variable} relative flex min-h-dvh w-full flex-col overflow-auto overscroll-none scroll-smooth font-mono text-stone-800 antialiased`}
       >
         <div
           id="overlay"

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { reviewImageSchema } from '../../image/schema/ReviewImageSchema';
 import { openingHoursSchema } from '../../opening-hours/schema/OpeningHoursSchema';
 
 const restaurantSchema = z.object({
@@ -10,6 +11,7 @@ const restaurantSchema = z.object({
   internationalPhoneNumber: z.string(),
   formattedAddress: z.string(),
   websiteUri: z.optional(z.string().url()),
+  thumbnail: z.optional(reviewImageSchema),
   totalRating: z.number().gte(0).lte(5),
   tastyTotalRating: z.number().gte(0).lte(5),
   textureTotalRating: z.number().gte(0).lte(5),
