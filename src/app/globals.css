@@ -4,7 +4,9 @@
 
 #overlay {
   background-image: url('/svg/topography.svg');
+  back-blend-mode: multiply;
 }
 #gradient {
   background-image: url('/svg/nnnoise.svg');
+  mix-blend-mode: soft-light;
 }

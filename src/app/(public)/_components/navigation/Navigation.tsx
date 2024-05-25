@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 function Navigation() {
   return (
-    <nav className="z-20 flex h-32 w-full flex-col items-center bg-stone-800 p-4">
+    <nav className="z-20 flex h-32 w-full flex-col items-center bg-stone-900 p-4">
       <div className="flex size-full justify-between">
         <p className="text-sm font-semibold text-stone-100">Burger Hunt</p>
         <ul className="flex gap-4 font-sans text-sm font-semibold text-stone-100">

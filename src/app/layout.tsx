@@ -10,15 +10,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-stone-600">
       <body
-        className={`${RobotoMono.variable} ${Rubik.variable} relative flex h-dvh flex-col bg-stone-300 font-sans`}
+        className={`${RobotoMono.variable} ${Rubik.variable} relative flex min-h-dvh w-full flex-col overflow-auto overscroll-none scroll-smooth font-sans antialiased`}
       >
         <div
-          id="gradient"
-          className="pointer-events-none fixed left-0 top-0 z-20 size-full opacity-15 mix-blend-difference"
+          id="overlay"
+          className="pointer-events-none fixed z-20 size-full opacity-85"
         />
-
+        <div
+          id="gradient"
+          className="pointer-events-none fixed z-30 size-full opacity-70"
+        />
         {children}
       </body>
     </html>
