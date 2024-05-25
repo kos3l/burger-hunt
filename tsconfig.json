@@ -37,7 +37,8 @@
       "@/protected-pages/*": ["./src/app/(auth)/*"],
       "@/domain/*": ["./src/domain/*"],
       "@/context/*": ["./src/app/_context/*"],
-      "@/resources/*": ["./src/resources/*"]
+      "@/resources/*": ["./src/resources/*"],
+      "@/util/*": ["./src/util/*"]
     }
   },
   "include": [

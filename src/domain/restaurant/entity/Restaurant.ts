@@ -7,8 +7,7 @@ type Restaurant = {
   primaryType: string;
   internationalPhoneNumber: string;
   formattedAddress: string;
-  shortFormattedAddress: string;
-  websiteUri: string;
+  websiteUri?: string;
   totalRating: number;
   tastyTotalRating: number;
   textureTotalRating: number;
