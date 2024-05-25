@@ -1,4 +1,8 @@
+import { HomeRestaurantGrid } from '@/public-pages/(home)/_components/grid/HomeRestaurantGrid';
+
 function HomeComposition() {
+  const address = 'willemoesgade';
+
   return (
     <main className="z-20 flex grow gap-12 p-8">
       <div className="sticky top-8 flex h-[60rem] w-[45rem] rounded-md bg-stone-100 p-4">
@@ -6,18 +10,7 @@ function HomeComposition() {
           Search for burgers!
         </p>
       </div>
-      <div className="grid h-full grow grid-cols-3 gap-8">
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-        <div className="col-span-1 h-[30rem] rounded-md bg-stone-100" />
-      </div>
+      <HomeRestaurantGrid searchAddress={address} />
     </main>
   );
 }
