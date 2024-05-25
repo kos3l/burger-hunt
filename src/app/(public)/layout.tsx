@@ -1,3 +1,4 @@
+import { Footer } from '@/components/footer/Footer';
 import { Navigation } from '@/components/navigation/Navigation';
 
 export default function PublicLayout({
@@ -9,7 +10,7 @@ export default function PublicLayout({
     <>
       <Navigation />
       {children}
-      <footer className="z-20">footer!</footer>
+      <Footer />
     </>
   );
 }
