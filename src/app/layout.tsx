@@ -1,5 +1,6 @@
 import './globals.css';
 
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { Metadata } from 'next';
 
 import ReactQueryProvider from '@/context/react-query-provider/ReactQueryProvider';
@@ -23,7 +24,11 @@ export default function RootLayout({
           id="gradient"
           className="pointer-events-none fixed z-30 size-full opacity-70"
         />
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+
+        <ReactQueryProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );
