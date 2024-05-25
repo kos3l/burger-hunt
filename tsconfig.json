@@ -35,7 +35,9 @@
       "@/public-pages/*": ["./src/app/(public)/*"],
       "@/auth-pages/*": ["./src/app/(protected)/*"],
       "@/protected-pages/*": ["./src/app/(auth)/*"],
-      "@/domain/*": ["./src/domain/*"]
+      "@/domain/*": ["./src/domain/*"],
+      "@/context/*": ["./src/app/_context/*"],
+      "@/resources/*": ["./src/resources/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

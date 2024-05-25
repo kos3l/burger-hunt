@@ -2,7 +2,8 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 
-import { RobotoMono, Rubik } from '../resources/fonts';
+import ReactQueryProvider from '@/context/react-query-provider/ReactQueryProvider';
+import { RobotoMono, Rubik } from '@/resources/fonts';
 
 export default function RootLayout({
   children,
@@ -22,7 +23,7 @@ export default function RootLayout({
           id="gradient"
           className="pointer-events-none fixed z-30 size-full opacity-70"
         />
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
