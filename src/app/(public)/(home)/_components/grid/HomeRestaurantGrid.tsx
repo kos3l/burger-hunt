@@ -1,14 +1,17 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import { useDebounce } from 'use-debounce';
 
 import { restaurantSearchQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
 import { fetchRestaurantByLocation } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantByLocation';
 
 function HomeRestaurantGrid({ searchAddress }: { searchAddress: string }) {
+  const [debouncedAddress] = useDebounce(searchAddress, 1000);
+
   const { data: restaurants, isPending } = useQuery({
-    queryKey: restaurantSearchQueryKeys,
-    queryFn: () => fetchRestaurantByLocation({ address: searchAddress }),
+    queryKey: [...restaurantSearchQueryKeys, debouncedAddress],
+    queryFn: () => fetchRestaurantByLocation({ address: debouncedAddress }),
   });
 
   if (isPending) {
