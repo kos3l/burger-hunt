@@ -29,7 +29,6 @@ function RestaurantsByCoordinatesGrid({
 
   return (
     <div className="grid h-full grow grid-cols-3 gap-8">
-      <p>Close to you!!!</p>
       {restaurants.map((restaurant) => {
         return (
           <RestaurantCard

@@ -1,4 +1,4 @@
-function HomeSearchInput({
+function RestaurantSearchInput({
   value,
   onChange,
   onBlur,
@@ -19,7 +19,7 @@ function HomeSearchInput({
         id={name}
         name={name}
         value={value}
-        className="rounded-md border-2 border-stone-800"
+        className="rounded-sm border-2 border-stone-900 p-2"
         onChange={(e) => onChange(e.target.value)}
         onBlur={() => onBlur?.()}
       />
@@ -27,4 +27,4 @@ function HomeSearchInput({
   );
 }
 
-export { HomeSearchInput };
+export { RestaurantSearchInput };

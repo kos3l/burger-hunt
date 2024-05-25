@@ -2,10 +2,9 @@
 
 import { useState } from 'react';
 
-import { RestaurantsByAddressGrid } from '@/src/app/(public)/(home)/_components/grid/RestaurantsByAddressGrid';
-
-import { RestaurantsByCoordinatesGrid } from './_components/grid/RestaurantsByCoordinatesGrid';
-import { HomeRestaurantSearchForm } from './_components/search-form/HomeRestaurantSearchForm';
+import { RestaurantsByAddressGrid } from '@/public-pages/(home)/_components/grid/RestaurantsByAddressGrid';
+import { RestaurantsByCoordinatesGrid } from '@/public-pages/(home)/_components/grid/RestaurantsByCoordinatesGrid';
+import { RestaurantSearchForm } from '@/public-pages/(home)/_components/search-form/RestaurantSearchForm';
 
 function HomeComposition() {
   const defaultAddress = 'Skolegade 26, 6700 Esbjerg';
@@ -25,7 +24,7 @@ function HomeComposition() {
 
   return (
     <main className="z-20 flex grow gap-12 p-8">
-      <HomeRestaurantSearchForm
+      <RestaurantSearchForm
         searchAddress={searchAddress}
         handleSearchAddressChange={(newAddress: string) =>
           handleSearchAddressChange(newAddress)
