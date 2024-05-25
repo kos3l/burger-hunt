@@ -1,16 +1,25 @@
+'use client';
+
+import { useState } from 'react';
+
 import { HomeRestaurantGrid } from '@/public-pages/(home)/_components/grid/HomeRestaurantGrid';
 
+import { HomeRestaurantSearchForm } from './_components/search-form/HomeRestaurantSearchForm';
+
 function HomeComposition() {
-  const address = 'willemoesgade';
+  const [searchAddress, setSearchAddress] = useState(
+    'Skolegade 26, 6700 Esbjerg',
+  );
 
   return (
     <main className="z-20 flex grow gap-12 p-8">
-      <div className="sticky top-8 flex h-[60rem] w-[45rem] rounded-md bg-stone-100 p-4">
-        <p className="font-mono text-[3rem] font-bold text-stone-800">
-          Search for burgers!
-        </p>
-      </div>
-      <HomeRestaurantGrid searchAddress={address} />
+      <HomeRestaurantSearchForm
+        searchAddress={searchAddress}
+        handleSearchAddressChange={(newAddress: string) =>
+          setSearchAddress(newAddress)
+        }
+      />
+      <HomeRestaurantGrid searchAddress={searchAddress} />
     </main>
   );
 }

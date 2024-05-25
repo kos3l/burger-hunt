@@ -44,6 +44,8 @@
         "import/extensions": "off",
         "react/function-component-definition": "off",
         "react/require-default-props": "off",
+        "no-plusplus": "off",
+        "jsx-a11y/label-has-associated-control": "off",
         "react/jsx-props-no-spreading": "off",
         "@typescript-eslint/comma-dangle": "off",
         "no-restricted-syntax": [
