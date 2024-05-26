@@ -8,6 +8,7 @@ import { RestaurantSearchForm } from '@/public-pages/(home)/_components/search-f
 
 function HomeComposition() {
   const defaultAddress = 'Skolegade 26, 6700 Esbjerg';
+
   const [searchAddress, setSearchAddress] = useState<string>(defaultAddress);
   const [showTastiest, setShowTastiest] = useState<boolean>(true);
   const [showPrettiest, setShowPrettiest] = useState<boolean>(true);

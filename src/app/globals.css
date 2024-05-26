@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-#overlay {
+#map {
   background-image: url('/svg/topography.svg');
   back-blend-mode: multiply;
 }
-#gradient {
+#noise {
   background-image: url('/svg/nnnoise.svg');
   mix-blend-mode: soft-light;
+}
+#grid {
+  background-image: url('/svg/tiny-checkers.svg');
+  background-repeat: repeat;
 }

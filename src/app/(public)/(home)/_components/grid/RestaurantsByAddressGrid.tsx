@@ -7,6 +7,8 @@ import { RestaurantCard } from '@/public-pages/(home)/_components/card/Restauran
 import { restaurantSearchAddressQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
 import { fetchRestaurantByAddress } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantByAddress';
 
+import { RestaurantCardPlaceholder } from '../card/placeholder/RestaurantCardPlaceholder';
+
 function RestaurantsByAddressGrid({
   searchAddress,
   showTastiest,
@@ -22,7 +24,7 @@ function RestaurantsByAddressGrid({
 }) {
   const [debouncedAddress] = useDebounce(searchAddress, 1000);
 
-  const { data: restaurants, isPending } = useQuery({
+  const { data: restaurants, isFetching } = useQuery({
     queryKey: [
       ...restaurantSearchAddressQueryKeys,
       debouncedAddress,
@@ -41,12 +43,27 @@ function RestaurantsByAddressGrid({
       }),
   });
 
-  if (isPending) {
-    return <div>loading..</div>;
+  if (isFetching) {
+    return (
+      <div className="grid h-full grow grid-cols-3 gap-8">
+        <RestaurantCardPlaceholder />
+        <RestaurantCardPlaceholder />
+        <RestaurantCardPlaceholder />
+      </div>
+    );
   }
 
   if (!restaurants) {
-    return <div>No results found..</div>;
+    return (
+      <div className="grid h-full grow grid-cols-3 gap-8">
+        <div className="col-span-3 flex h-24 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8">
+          <p className="col-span-3 text-xl font-semibold">
+            Sorry! We couldn&apos;t find any burger restaurants close to this
+            address.
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (

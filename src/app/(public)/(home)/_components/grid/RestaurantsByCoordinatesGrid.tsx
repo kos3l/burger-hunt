@@ -6,6 +6,8 @@ import { RestaurantCard } from '@/public-pages/(home)/_components/card/Restauran
 import { restaurantSearchLocationQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
 import { fetchRestaurantByLocation } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantByLocation';
 
+import { RestaurantCardPlaceholder } from '../card/placeholder/RestaurantCardPlaceholder';
+
 function RestaurantsByCoordinatesGrid({
   latitude,
   longitude,
@@ -21,7 +23,7 @@ function RestaurantsByCoordinatesGrid({
   showBestTexture: boolean;
   showClosest: boolean;
 }) {
-  const { data: restaurants, isPending } = useQuery({
+  const { data: restaurants, isFetching } = useQuery({
     queryKey: [
       ...restaurantSearchLocationQueryKeys,
       latitude,
@@ -42,12 +44,22 @@ function RestaurantsByCoordinatesGrid({
       }),
   });
 
-  if (isPending) {
-    return <div>loading..</div>;
+  if (isFetching) {
+    return (
+      <div className="grid h-full grow grid-cols-3 gap-8">
+        <RestaurantCardPlaceholder />
+        <RestaurantCardPlaceholder />
+        <RestaurantCardPlaceholder />
+      </div>
+    );
   }
 
   if (!restaurants) {
-    return <div>No results found..</div>;
+    return (
+      <div className="grid h-full grow grid-cols-3 gap-8">
+        <p className="col-span-3">No Results</p>
+      </div>
+    );
   }
 
   return (

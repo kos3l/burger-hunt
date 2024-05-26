@@ -17,11 +17,11 @@ export default function RootLayout({
         className={`${RobotoMono.variable} ${Rubik.variable} relative flex min-h-dvh w-full flex-col overflow-auto overscroll-none scroll-smooth font-mono text-stone-800 antialiased`}
       >
         <div
-          id="overlay"
+          id="map"
           className="pointer-events-none fixed z-20 size-full opacity-85"
         />
         <div
-          id="gradient"
+          id="noise"
           className="pointer-events-none fixed z-30 size-full opacity-70"
         />
 
