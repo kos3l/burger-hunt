@@ -12,7 +12,7 @@ function NavigationHeading() {
         </h1>
       </div>
       <div className="flex items-center gap-4">
-        <p className="text-lg font-light text-stone-900">
+        <p className="font-light text-stone-900">
           If you want to write reviews, then join the community!
         </p>
         <ButtonLink title="Sign Up" href="/register" />
