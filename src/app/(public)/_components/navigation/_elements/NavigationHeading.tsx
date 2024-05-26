@@ -1,8 +1,11 @@
 import Image from 'next/image';
+import { getServerSession } from 'next-auth';
 
 import { ButtonLink } from '@/components/_elements/link/ButtonLink';
 
-function NavigationHeading() {
+async function NavigationHeading() {
+  const session = await getServerSession();
+
   return (
     <div className="flex w-full flex-col items-center justify-between gap-4 lg:flex-row">
       <div className="flex w-full items-center justify-start gap-4 lg:w-max lg:justify-center">
@@ -11,12 +14,14 @@ function NavigationHeading() {
           Search local burgers!
         </h1>
       </div>
-      <div className="hidden items-center gap-4 lg:flex">
-        <p className="text-sm font-light text-stone-900 xl:text-base">
-          If you want to write reviews, then join the community!
-        </p>
-        <ButtonLink title="Sign Up" href="/register" />
-      </div>
+      {!session && (
+        <div className="hidden items-center gap-4 lg:flex">
+          <p className="text-sm font-light text-stone-900 xl:text-base">
+            If you want to write reviews, then join the community!
+          </p>
+          <ButtonLink title="Sign Up" href="/register" />
+        </div>
+      )}
     </div>
   );
 }
