@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getServerSession } from 'next-auth';
 
-import { ButtonLink } from '@/components/_elements/link/ButtonLink';
+import { ButtonLink } from '@/src/app/(public)/_components/navigation/_elements/ButtonLink';
 
 async function NavigationHeading() {
   const session = await getServerSession();

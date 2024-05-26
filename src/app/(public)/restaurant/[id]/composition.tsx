@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 import { restaurantByIdQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
 import { fetchRestaurantById } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantById';
+import { reviewQueryKeys } from '@/src/domain/review/service/keys/ReviewQueryKeys';
+import { fetchReviewByRestaurantId } from '@/src/domain/review/service/query-fn/fetchReviewByRestaurantId';
 
 import { RestaurantAddress } from '../_components/RestaurantAddress';
 import { RestaurantOpeningHours } from '../_components/RestaurantOpeningHours';
@@ -17,6 +19,11 @@ function RestaurantComposition({ id }: { id: string }) {
     queryFn: () => fetchRestaurantById({ id }),
   });
 
+  const { data: reviews, isFetching: isFetchingReviews } = useQuery({
+    queryKey: [...reviewQueryKeys, id],
+    queryFn: () => fetchReviewByRestaurantId({ id }),
+  });
+  console.log(reviews);
   if (!restaurant) {
     return <p>empty!!!!</p>;
   }
@@ -24,7 +31,7 @@ function RestaurantComposition({ id }: { id: string }) {
   if (isFetching) {
     return <p>Loading!!!!</p>;
   }
-
+  console.log(isFetchingReviews);
   const restaurantImage = restaurant.thumbnail
     ? restaurant.thumbnail.url
     : '/images/placeholder-restaurant.jpg';

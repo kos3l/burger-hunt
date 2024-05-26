@@ -1,6 +1,6 @@
 import { sleep } from '@/src/util/mock/mockUtil';
 
-import { RegisterDto } from '../dto/RegisterDto';
+import { RegisterDto } from '../../dto/RegisterDto';
 
 async function registerUser({ username, email, password }: RegisterDto) {
   sleep(2000);

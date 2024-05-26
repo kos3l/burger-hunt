@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { RegisterDto } from '@/src/domain/auth/dto/RegisterDto';
-import { registerUser } from '@/src/domain/auth/mutation-fn/registerUser';
+import { registerUser } from '@/src/domain/auth/service/mutation-fn/registerUser';
 
 import { FormButton } from '../../_components/FormButton';
 import { FormEmaiInput } from '../../_components/FormEmaiInput';

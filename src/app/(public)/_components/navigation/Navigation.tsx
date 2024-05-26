@@ -1,5 +1,5 @@
-import { NavigationHeading } from '@/components/navigation/_elements/NavigationHeading';
-import { NavigationLinkBar } from '@/components/navigation/_elements/NavigationLinkBar';
+import { NavigationHeading } from '@/src/app/(public)/_components/navigation/_components/NavigationHeading';
+import { NavigationLinkBar } from '@/src/app/(public)/_components/navigation/_components/NavigationLinkBar';
 
 function Navigation() {
   return (

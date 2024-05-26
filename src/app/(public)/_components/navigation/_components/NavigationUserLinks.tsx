@@ -4,7 +4,7 @@ import { signOut } from 'next-auth/react';
 
 import { NavigationLink } from '@/src/app/(public)/_components/navigation/_elements/NavigationLink';
 
-import { NavigationButton } from '../../_elements/button/NavigationButton';
+import { NavigationButton } from '../_elements/NavigationButton';
 
 function NavigationUserLinks() {
   return (

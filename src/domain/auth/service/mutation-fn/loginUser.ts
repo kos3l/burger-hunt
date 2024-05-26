@@ -2,7 +2,7 @@ import { signIn } from 'next-auth/react';
 
 import { sleep } from '@/src/util/mock/mockUtil';
 
-import { LoginDto } from '../dto/LoginDto';
+import { LoginDto } from '../../dto/LoginDto';
 
 async function loginUser({ email, password }: LoginDto) {
   sleep(2000);
