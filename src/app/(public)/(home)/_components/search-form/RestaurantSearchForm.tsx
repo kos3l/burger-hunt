@@ -1,7 +1,3 @@
-'use client';
-
-import { useState } from 'react';
-
 import { RestaurantSearchFormButton } from '@/public-pages/(home)/_components/_elements/button/RestaurantSearchFormButton';
 import { RestaurantSearchInput } from '@/public-pages/(home)/_components/_elements/input/RestaurantSearchInput';
 import { RestaurantSortRadio } from '@/public-pages/(home)/_components/_elements/input/RestaurantSortRadio';
@@ -10,16 +6,31 @@ function RestaurantSearchForm({
   searchAddress,
   handleSearchAddressChange,
   handleLocationChange,
+
+  showTastiest,
+  showPrettiest,
+  showBestTexture,
+  showClosest,
+
+  handleShowTastiestChange,
+  handleShowPrettiestChange,
+  handleShowBestTextureChange,
+  handleShowClosestChange,
 }: {
   searchAddress: string;
   handleSearchAddressChange: (newAddress: string) => void;
   handleLocationChange: (newLocation?: GeolocationPosition) => void;
-}) {
-  const [showTastiest, setShowTastiest] = useState<boolean>(true);
-  const [showPrettiest, setShowPrettiest] = useState<boolean>(true);
-  const [showBestTexture, setShowBestTexture] = useState<boolean>(true);
-  const [showClosest, setShowClosest] = useState<boolean>(true);
 
+  showTastiest: boolean;
+  showPrettiest: boolean;
+  showBestTexture: boolean;
+  showClosest: boolean;
+
+  handleShowTastiestChange: (value: boolean) => void;
+  handleShowPrettiestChange: (value: boolean) => void;
+  handleShowBestTextureChange: (value: boolean) => void;
+  handleShowClosestChange: (value: boolean) => void;
+}) {
   return (
     <div className="sticky top-8 flex h-[60rem] w-[30rem] flex-col gap-6 rounded-md border-2 border-stone-800 bg-stone-100 p-4">
       <RestaurantSearchFormButton
@@ -44,14 +55,14 @@ function RestaurantSearchForm({
             name="sort-taste"
             id="bland"
             value={!showTastiest}
-            onChange={() => setShowTastiest(false)}
+            onChange={() => handleShowTastiestChange(false)}
             label="Blandest"
           />
           <RestaurantSortRadio
             name="sort-taste"
             id="tasty"
             value={showTastiest === true}
-            onChange={() => setShowTastiest(true)}
+            onChange={() => handleShowTastiestChange(true)}
             label="Tastiest"
           />
         </div>
@@ -60,14 +71,14 @@ function RestaurantSearchForm({
             name="sort-visual"
             id="ugly"
             value={!showPrettiest}
-            onChange={() => setShowPrettiest(false)}
+            onChange={() => handleShowPrettiestChange(false)}
             label="Ugliest"
           />
           <RestaurantSortRadio
             name="sort-visual"
             id="pretty"
             value={showPrettiest === true}
-            onChange={() => setShowPrettiest(true)}
+            onChange={() => handleShowPrettiestChange(true)}
             label="Prettiest"
           />
         </div>
@@ -76,14 +87,14 @@ function RestaurantSearchForm({
             name="sort-texture"
             id="low-quality"
             value={!showBestTexture}
-            onChange={() => setShowBestTexture(false)}
+            onChange={() => handleShowBestTextureChange(false)}
             label="Lowest Quality"
           />
           <RestaurantSortRadio
             name="sort-texture"
             id="high-quality"
             value={showBestTexture === true}
-            onChange={() => setShowBestTexture(true)}
+            onChange={() => handleShowBestTextureChange(true)}
             label="Highest Quality"
           />
         </div>
@@ -92,14 +103,14 @@ function RestaurantSearchForm({
             name="sort-distance"
             id="far-away"
             value={!showClosest}
-            onChange={() => setShowClosest(false)}
+            onChange={() => handleShowClosestChange(false)}
             label="Farthest"
           />
           <RestaurantSortRadio
             name="sort-distance"
             id="close"
             value={showClosest === true}
-            onChange={() => setShowClosest(true)}
+            onChange={() => handleShowClosestChange(true)}
             label="Closest"
           />
         </div>

@@ -9,14 +9,36 @@ import { fetchRestaurantByAddress } from '@/src/domain/restaurant/service/query-
 
 function RestaurantsByAddressGrid({
   searchAddress,
+  showTastiest,
+  showPrettiest,
+  showBestTexture,
+  showClosest,
 }: {
   searchAddress: string;
+  showTastiest: boolean;
+  showPrettiest: boolean;
+  showBestTexture: boolean;
+  showClosest: boolean;
 }) {
   const [debouncedAddress] = useDebounce(searchAddress, 1000);
 
   const { data: restaurants, isPending } = useQuery({
-    queryKey: [...restaurantSearchAddressQueryKeys, debouncedAddress],
-    queryFn: () => fetchRestaurantByAddress({ address: debouncedAddress }),
+    queryKey: [
+      ...restaurantSearchAddressQueryKeys,
+      debouncedAddress,
+      showTastiest,
+      showPrettiest,
+      showBestTexture,
+      showClosest,
+    ],
+    queryFn: () =>
+      fetchRestaurantByAddress({
+        address: debouncedAddress,
+        showTastiest,
+        showPrettiest,
+        showBestTexture,
+        showClosest,
+      }),
   });
 
   if (isPending) {

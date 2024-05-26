@@ -9,14 +9,37 @@ import { fetchRestaurantByLocation } from '@/src/domain/restaurant/service/query
 function RestaurantsByCoordinatesGrid({
   latitude,
   longitude,
+  showTastiest,
+  showPrettiest,
+  showBestTexture,
+  showClosest,
 }: {
   latitude: number;
   longitude: number;
+  showTastiest: boolean;
+  showPrettiest: boolean;
+  showBestTexture: boolean;
+  showClosest: boolean;
 }) {
   const { data: restaurants, isPending } = useQuery({
-    queryKey: [...restaurantSearchLocationQueryKeys, latitude, longitude],
-
-    queryFn: () => fetchRestaurantByLocation({ latitude, longitude }),
+    queryKey: [
+      ...restaurantSearchLocationQueryKeys,
+      latitude,
+      longitude,
+      showTastiest,
+      showPrettiest,
+      showBestTexture,
+      showClosest,
+    ],
+    queryFn: () =>
+      fetchRestaurantByLocation({
+        latitude,
+        longitude,
+        showTastiest,
+        showPrettiest,
+        showBestTexture,
+        showClosest,
+      }),
   });
 
   if (isPending) {

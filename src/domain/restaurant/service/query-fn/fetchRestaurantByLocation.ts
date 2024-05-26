@@ -11,11 +11,20 @@ import { Restaurant } from '../../entity/Restaurant';
 async function fetchRestaurantByLocation({
   latitude,
   longitude,
+  showTastiest,
+  showPrettiest,
+  showBestTexture,
+  showClosest,
 }: {
   latitude: number;
   longitude: number;
+  showTastiest: boolean;
+  showPrettiest: boolean;
+  showBestTexture: boolean;
+  showClosest: boolean;
 }): Promise<Restaurant[]> {
   console.log(latitude, longitude);
+  console.log(showTastiest, showPrettiest, showBestTexture, showClosest);
   // NOTE: IF the API existed
   // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   // const data = await fetch(`${apiUrl}/restaurant/search?latitude=${location.latitude}&longitude=${location.longitude}`);
