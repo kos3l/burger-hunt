@@ -3,11 +3,11 @@ function NavigationButton({
   onClick,
 }: {
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
 }) {
   return (
     <button
-      onClick={() => onClick()}
+      onClick={() => onClick?.()}
       type="button"
       className="flex h-7 w-28 items-center justify-center rounded-sm bg-stone-400 text-sm font-medium"
     >

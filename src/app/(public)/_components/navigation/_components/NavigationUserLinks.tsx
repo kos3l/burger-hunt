@@ -9,7 +9,7 @@ import { NavigationButton } from '../_elements/NavigationButton';
 function NavigationUserLinks() {
   return (
     <>
-      <NavigationLink title="Profile" href="/profile" />
+      <NavigationLink title="Profile" href="/" />
       <NavigationButton title="Sign Out" onClick={() => signOut()} />
     </>
   );

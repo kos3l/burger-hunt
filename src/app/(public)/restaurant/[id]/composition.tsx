@@ -4,6 +4,7 @@
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
+import { useState } from 'react';
 
 import { restaurantByIdQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
 import { fetchRestaurantById } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantById';
@@ -15,8 +16,11 @@ import { RestaurantAddress } from '../_components/RestaurantAddress';
 import { RestaurantOpeningHours } from '../_components/RestaurantOpeningHours';
 import { RestaurantScores } from '../_components/RestaurantScores';
 import { RestaurantWebsite } from '../_components/RestaurantWebsite';
+import { CreateReviewCard } from './_components/CreateReviewCard';
 
 function RestaurantComposition({ id }: { id: string }) {
+  const [isCreateReviewOpen, setIsCreateReviewOpen] = useState<boolean>(false);
+
   const { data: session } = useSession();
   const { data: restaurant, isFetching } = useQuery({
     queryKey: [...restaurantByIdQueryKeys, id],
@@ -91,67 +95,79 @@ function RestaurantComposition({ id }: { id: string }) {
             )}
           </div>
         </div>
-        <div className="flex h-max grow flex-col gap-4 rounded-sm border-2 border-stone-800 bg-stone-100 p-4">
-          <div className="flex w-full justify-between gap-4">
-            <p className="font-bold">{reviewsCardtitle}</p>
-            {session && <NavigationButton onClick={() => {}} title="Add" />}
-          </div>
-          {isFetchingReviews ? (
-            <div className="w-full">
-              <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
-                <p className="text-sm font-semibold md:text-xl">Loading...</p>
-              </div>
+        <div className="flex h-max grow flex-col gap-4">
+          <CreateReviewCard
+            isOpen={isCreateReviewOpen}
+            handleIsOpen={() => setIsCreateReviewOpen(false)}
+            restaurantId={restaurant.id}
+          />
+          <div className="flex h-max flex-col gap-4 rounded-sm border-2 border-stone-800 bg-stone-100 p-4">
+            <div className="flex w-full justify-between gap-4">
+              <p className="font-bold">{reviewsCardtitle}</p>
+              {session && (
+                <NavigationButton
+                  title="Add"
+                  onClick={() => setIsCreateReviewOpen(true)}
+                />
+              )}
             </div>
-          ) : reviews && reviews.length > 0 ? (
-            <div className="flex w-full flex-col gap-4">
-              {reviews.map((review) => (
-                <div
-                  key={review.id}
-                  className="flex h-max w-full flex-col gap-4 border-2 border-stone-800 p-3 md:flex-row"
-                >
-                  <div className="relative aspect-square size-24 min-w-24 overflow-hidden rounded-md">
-                    <Image
-                      src={
-                        review.images && review.images[0]
-                          ? review.images[0].url
-                          : '/images/placeholder-restaurant.jpg'
-                      }
-                      alt="review-thumbnail-alt"
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div className="flex grow flex-col justify-start gap-4 md:gap-1">
-                    <div className="flex w-full flex-col gap-1 md:flex-row md:gap-3">
-                      <p className="truncate text-lg font-semibold">
-                        {review.title}
-                      </p>
-                      <div className="flex w-max items-center justify-start gap-2">
-                        <div className="flex size-6 items-center justify-center">
-                          <Image
-                            src="/icons/solid-star.svg"
-                            width={18}
-                            height={18}
-                            alt="star-icon"
-                          />
-                        </div>
-                        <p className="text-base">{review.totalRating}/5</p>
-                      </div>
-                    </div>
-                    <p className="text-sm">{review.content}</p>
-                  </div>
+            {isFetchingReviews ? (
+              <div className="w-full">
+                <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
+                  <p className="text-sm font-semibold md:text-xl">Loading...</p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="w-full">
-              <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
-                <p className="text-sm font-semibold md:text-xl">
-                  No reviews yet..
-                </p>
               </div>
-            </div>
-          )}
+            ) : reviews && reviews.length > 0 ? (
+              <div className="flex w-full flex-col gap-4">
+                {reviews.map((review) => (
+                  <div
+                    key={review.id}
+                    className="flex h-max w-full flex-col gap-4 border-2 border-stone-800 p-3 md:flex-row"
+                  >
+                    <div className="relative aspect-square size-24 min-w-24 overflow-hidden rounded-md">
+                      <Image
+                        src={
+                          review.images && review.images[0]
+                            ? review.images[0].url
+                            : '/images/placeholder-restaurant.jpg'
+                        }
+                        alt="review-thumbnail-alt"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div className="flex grow flex-col justify-start gap-4 md:gap-1">
+                      <div className="flex w-full flex-col gap-1 md:flex-row md:gap-3">
+                        <p className="truncate text-lg font-semibold">
+                          {review.title}
+                        </p>
+                        <div className="flex w-max items-center justify-start gap-2">
+                          <div className="flex size-6 items-center justify-center">
+                            <Image
+                              src="/icons/solid-star.svg"
+                              width={18}
+                              height={18}
+                              alt="star-icon"
+                            />
+                          </div>
+                          <p className="text-base">{review.totalRating}/5</p>
+                        </div>
+                      </div>
+                      <p className="text-sm">{review.content}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="w-full">
+                <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
+                  <p className="text-sm font-semibold md:text-xl">
+                    No reviews yet..
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </main>

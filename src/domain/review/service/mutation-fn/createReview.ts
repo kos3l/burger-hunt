@@ -15,7 +15,7 @@ async function createReview({
   totalRating,
 }: CreateReviewDto) {
   sleep(2000);
-
+  console.log('review creation');
   const payload = JSON.stringify({
     restaurantId,
     title,

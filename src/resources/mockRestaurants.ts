@@ -1,7 +1,7 @@
 const restaurants = [
   {
     id: 'c0104e68-a5f2-4c43-ac33-ec2eaf2600b7',
-    name: 'Gadens Gastronomer6',
+    name: 'Burger Town',
     types: ['hamburger_restaurant', 'restaurant', 'fast_food_restaurant'],
     primaryType: 'restaurant',
     internationalPhoneNumber: '+4500000000',
@@ -27,7 +27,7 @@ const restaurants = [
   },
   {
     id: 'fa45e124-7f31-4dd5-88a6-31548c37bf0a',
-    name: 'Gadens Gastronomer7',
+    name: 'McDonalds',
     types: ['hamburger_restaurant', 'restaurant', 'fast_food_restaurant'],
     primaryType: 'restaurant',
     internationalPhoneNumber: '+4500000000',
@@ -58,7 +58,7 @@ const restaurants = [
   },
   {
     id: '45eb706e-97c7-4b2c-9f8d-313f1fd33428',
-    name: 'Gadens Gastronomer8',
+    name: 'Rocky',
     types: ['hamburger_restaurant', 'restaurant', 'fast_food_restaurant'],
     primaryType: 'restaurant',
     internationalPhoneNumber: '+4500000000',
@@ -93,7 +93,7 @@ const restaurants = [
   },
   {
     id: 'd76cf7e4-6d2a-42f7-a462-c4e9f60cf255',
-    name: 'Gadens Gastronomer9',
+    name: 'Crabby Patty',
     types: ['hamburger_restaurant', 'restaurant', 'fast_food_restaurant'],
     primaryType: 'restaurant',
     internationalPhoneNumber: '+4500000000',
@@ -124,7 +124,7 @@ const restaurants = [
   },
   {
     id: '58760994-4442-40c3-b941-a8fe2ef1637c',
-    name: 'Gadens Gastronomer10',
+    name: 'Burgers by the river',
     types: ['hamburger_restaurant', 'restaurant', 'fast_food_restaurant'],
     primaryType: 'restaurant',
     internationalPhoneNumber: '+4500000000',
