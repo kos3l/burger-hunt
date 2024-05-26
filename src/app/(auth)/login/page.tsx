@@ -7,5 +7,5 @@ export default function Login() {
 }
 
 export const metadata: Metadata = {
-  title: 'Login',
+  title: 'Burger Hunt | Login',
 };

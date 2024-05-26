@@ -6,11 +6,13 @@ import { useState } from 'react';
 
 import { FormButton } from '../_components/FormButton';
 import { FormEmaiInput } from '../_components/FormEmaiInput';
+import { FormInput } from '../_components/FormInput';
 import { FormPasswordInput } from '../_components/FormPasswordInput';
 
-function LoginComposition() {
+function RegisterComposition() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
 
   function handleEmailChange(newEmail: string) {
     setEmail(newEmail);
@@ -18,8 +20,11 @@ function LoginComposition() {
   function handlePasswordChange(newPassword: string) {
     setPassword(newPassword);
   }
+  function handleUsernameChange(newUsername: string) {
+    setUsername(newUsername);
+  }
 
-  const isFormdataValid = email !== '' && password !== '';
+  const isFormdataValid = email !== '' && password !== '' && username !== '';
 
   return (
     <main className="z-20 flex min-h-full grow justify-center">
@@ -27,8 +32,17 @@ function LoginComposition() {
         <div className="relative flex size-full min-w-full rounded-sm border-2 border-stone-800 bg-stone-100">
           <div className="flex size-full flex-col items-center justify-center gap-4 p-8 py-16 md:w-1/2 md:py-4 lg:px-24">
             <div className="w-full">
-              <p className="text-start text-2xl font-semibold">Welcome back!</p>
+              <p className="text-start text-2xl font-semibold">
+                Create an account
+              </p>
             </div>
+            <FormInput
+              value={username}
+              onChange={(val) => handleUsernameChange(val)}
+              name="username"
+              placeholder="Jane94"
+              label="Username"
+            />
             <FormEmaiInput
               value={email}
               onChange={(val) => handleEmailChange(val)}
@@ -45,15 +59,15 @@ function LoginComposition() {
             />
             <div className="flex w-full flex-col items-center gap-5 pt-2">
               <FormButton
-                text="Sign In"
+                text="Sign Up"
                 onClick={() => {}}
                 disabled={!isFormdataValid}
               />
               <div className="flex w-full items-center gap-2 text-sm lg:text-base">
                 <p className="text-stone-700">
-                  If you don&apos;t have an account, then{' '}
-                  <Link href="/register">
-                    <span className="font-semibold underline">Sign Up</span>
+                  Already have an account?{' '}
+                  <Link href="/login">
+                    <span className="font-semibold underline">Sign In</span>
                   </Link>
                 </p>
               </div>
@@ -61,7 +75,7 @@ function LoginComposition() {
           </div>
           <div className="relative hidden h-full w-1/2 md:flex">
             <Image
-              src="/images/burger-mock.jpg"
+              src="/images/burger-mock-two.jpg"
               alt="restaurant-thumbnail-alt"
               fill
               style={{ objectFit: 'cover' }}
@@ -73,4 +87,4 @@ function LoginComposition() {
   );
 }
 
-export { LoginComposition };
+export { RegisterComposition };
