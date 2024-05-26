@@ -5,7 +5,7 @@ import { RestaurantSortRadio } from '@/public-pages/(home)/_components/_elements
 function RestaurantSearchForm({
   searchAddress,
   handleSearchAddressChange,
-  handleLocationChange,
+  handleOnSearchByLocationClick,
 
   showTastiest,
   showPrettiest,
@@ -19,7 +19,7 @@ function RestaurantSearchForm({
 }: {
   searchAddress: string;
   handleSearchAddressChange: (newAddress: string) => void;
-  handleLocationChange: (newLocation?: GeolocationPosition) => void;
+  handleOnSearchByLocationClick: (newLocation?: GeolocationPosition) => void;
 
   showTastiest: boolean;
   showPrettiest: boolean;
@@ -37,8 +37,8 @@ function RestaurantSearchForm({
         text="Search near me"
         onClick={() =>
           navigator.geolocation.getCurrentPosition(
-            (position) => handleLocationChange(position),
-            () => handleLocationChange(undefined),
+            (position) => handleOnSearchByLocationClick(position),
+            () => handleOnSearchByLocationClick(undefined),
           )
         }
       />
