@@ -14,9 +14,8 @@ type Restaurant = {
   textureTotalRating: number;
   visualTotalRating: number;
   openingHours: OpeningHours;
-  upvotes: number;
-  downvotes: number;
   thumbnail?: ReviewImage;
+  distance: number;
 };
 
 export { type Restaurant };

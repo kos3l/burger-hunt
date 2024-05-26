@@ -57,8 +57,7 @@ async function fetchRestaurantByAddress({
             to: '2024-05-25T09:00:00Z',
           },
         },
-        upvotes: 50,
-        downvotes: 10,
+        distance: 1000,
       },
       {
         id: '65c3483b-e1ed-4849-bca0-1013c412d416',
@@ -79,7 +78,7 @@ async function fetchRestaurantByAddress({
           reviewId: 12004,
         },
         openingHours: {
-          openNow: true,
+          openNow: false,
           monday: {
             from: '2024-05-25T09:00:00Z',
             to: '2024-05-25T09:00:00Z',
@@ -89,8 +88,7 @@ async function fetchRestaurantByAddress({
             to: '2024-05-25T09:00:00Z',
           },
         },
-        upvotes: 50,
-        downvotes: 10,
+        distance: 2000,
       },
       {
         id: '07bcd9c4-c083-496e-ab31-26e7ba0765dc',
@@ -121,8 +119,7 @@ async function fetchRestaurantByAddress({
             to: '2024-05-25T09:00:00Z',
           },
         },
-        upvotes: 50,
-        downvotes: 10,
+        distance: 1500,
       },
       {
         id: '4056b1a8-c354-4d85-a037-b32bd0df25fd',
@@ -143,7 +140,7 @@ async function fetchRestaurantByAddress({
         textureTotalRating: 2,
         visualTotalRating: 1,
         openingHours: {
-          openNow: true,
+          openNow: false,
           monday: {
             from: '2024-05-25T09:00:00Z',
             to: '2024-05-25T09:00:00Z',
@@ -153,8 +150,7 @@ async function fetchRestaurantByAddress({
             to: '2024-05-25T09:00:00Z',
           },
         },
-        upvotes: 50,
-        downvotes: 10,
+        distance: 500,
       },
       {
         id: '727f85bd-53ca-4cd6-a637-c5fc728b796e',
@@ -185,8 +181,7 @@ async function fetchRestaurantByAddress({
             to: '2024-05-25T09:00:00Z',
           },
         },
-        upvotes: 50,
-        downvotes: 10,
+        distance: 6000,
       },
     ],
   };

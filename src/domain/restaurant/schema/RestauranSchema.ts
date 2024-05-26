@@ -17,8 +17,7 @@ const restaurantSchema = z.object({
   textureTotalRating: z.number().gte(0).lte(5),
   visualTotalRating: z.number().gte(0).lte(5),
   openingHours: openingHoursSchema,
-  upvotes: z.number().gte(0),
-  downvotes: z.number().gte(0),
+  distance: z.number().gte(0),
 });
 
 export { restaurantSchema };
