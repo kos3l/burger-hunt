@@ -23,7 +23,7 @@ function RestaurantSearchInput({
           id={name}
           name={name}
           value={value}
-          className="rounded-sm border-2 border-stone-900 p-2"
+          className="rounded-sm border-2 border-stone-900 p-2 text-sm"
           onChange={(e) => onChange(e.target.value)}
           onBlur={() => onBlur?.()}
         />

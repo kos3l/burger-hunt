@@ -1,50 +1,18 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-
 import { RestaurantCard } from '@/public-pages/(home)/_components/card/RestaurantCard';
-import { restaurantSearchLocationQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
-import { fetchRestaurantByLocation } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantByLocation';
+import { Restaurant } from '@/src/domain/restaurant/entity/Restaurant';
 
 import { RestaurantCardPlaceholder } from '../card/placeholder/RestaurantCardPlaceholder';
 import { RestaurantGridPlaceholder } from './placeholder/RestaurantGridPlaceholder';
 
-function RestaurantsByCoordinatesGrid({
-  latitude,
-  longitude,
-  showTastiest,
-  showPrettiest,
-  showBestTexture,
-  showClosest,
+function RestaurantGrid({
+  restaurants,
+  isFetching,
 }: {
-  latitude: number;
-  longitude: number;
-  showTastiest: boolean;
-  showPrettiest: boolean;
-  showBestTexture: boolean;
-  showClosest: boolean;
+  restaurants?: Restaurant[];
+  isFetching: boolean;
 }) {
-  const { data: restaurants, isFetching } = useQuery({
-    queryKey: [
-      ...restaurantSearchLocationQueryKeys,
-      latitude,
-      longitude,
-      showTastiest,
-      showPrettiest,
-      showBestTexture,
-      showClosest,
-    ],
-    queryFn: () =>
-      fetchRestaurantByLocation({
-        latitude,
-        longitude,
-        showTastiest,
-        showPrettiest,
-        showBestTexture,
-        showClosest,
-      }),
-  });
-
   if (isFetching) {
     return (
       <div className="grid h-max w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
@@ -74,4 +42,4 @@ function RestaurantsByCoordinatesGrid({
   );
 }
 
-export { RestaurantsByCoordinatesGrid };
+export { RestaurantGrid };

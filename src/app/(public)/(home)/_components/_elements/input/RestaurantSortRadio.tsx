@@ -22,7 +22,7 @@ function RestaurantSortRadio({
         checked={value}
         onChange={() => onChange()}
       />
-      <label htmlFor={id} className="absolute cursor-pointer">
+      <label htmlFor={id} className="absolute cursor-pointer text-sm">
         {label}
       </label>
     </div>

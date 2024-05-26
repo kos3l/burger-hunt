@@ -21,7 +21,7 @@ async function fetchRestaurantByAddress({
   showBestTexture: boolean;
   showClosest: boolean;
 }): Promise<Restaurant[]> {
-  console.log(address);
+  console.log(address, 'address');
   console.log(showTastiest, showPrettiest, showBestTexture, showClosest);
   // NOTE: IF the API existed
   // const apiUrl = process.env.NEXT_PUBLIC_API_URL;

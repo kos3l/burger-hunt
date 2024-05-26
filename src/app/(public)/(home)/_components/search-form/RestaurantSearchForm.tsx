@@ -32,7 +32,7 @@ function RestaurantSearchForm({
   handleShowClosestChange: (value: boolean) => void;
 }) {
   return (
-    <div className="sticky top-8 flex h-[60rem] w-[30rem] min-w-[30rem] flex-col gap-6 rounded-sm border-2 border-stone-800 bg-stone-100 p-4">
+    <div className="relative flex h-max w-full min-w-[25rem] flex-col gap-6 rounded-sm border-2 border-stone-800 bg-stone-100 p-4 lg:sticky lg:left-0 lg:top-8 lg:w-[25rem]">
       <RestaurantSearchFormButton
         text="Search near me"
         onClick={() =>

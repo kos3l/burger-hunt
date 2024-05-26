@@ -8,6 +8,7 @@ import { restaurantSearchAddressQueryKeys } from '@/src/domain/restaurant/servic
 import { fetchRestaurantByAddress } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantByAddress';
 
 import { RestaurantCardPlaceholder } from '../card/placeholder/RestaurantCardPlaceholder';
+import { RestaurantGridPlaceholder } from './placeholder/RestaurantGridPlaceholder';
 
 function RestaurantsByAddressGrid({
   searchAddress,
@@ -45,7 +46,7 @@ function RestaurantsByAddressGrid({
 
   if (isFetching) {
     return (
-      <div className="grid h-full grow grid-cols-3 gap-8">
+      <div className="grid h-max w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
         <RestaurantCardPlaceholder />
         <RestaurantCardPlaceholder />
         <RestaurantCardPlaceholder />
@@ -54,20 +55,11 @@ function RestaurantsByAddressGrid({
   }
 
   if (!restaurants) {
-    return (
-      <div className="grid h-full grow grid-cols-3 gap-8">
-        <div className="col-span-3 flex h-24 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8">
-          <p className="col-span-3 text-xl font-semibold">
-            Sorry! We couldn&apos;t find any burger restaurants close to this
-            address.
-          </p>
-        </div>
-      </div>
-    );
+    return <RestaurantGridPlaceholder />;
   }
 
   return (
-    <div className="grid h-full grow grid-cols-3 gap-8">
+    <div className="grid h-max w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:w-max">
       {restaurants.map((restaurant) => {
         return (
           <RestaurantCard
