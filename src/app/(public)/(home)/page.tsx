@@ -7,7 +7,7 @@ export default function Home() {
 }
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: 'Burger Hunt | Home',
   description: 'home',
   keywords: ['burger'],
   openGraph: {

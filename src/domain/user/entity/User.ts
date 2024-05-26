@@ -2,7 +2,7 @@ type User = {
   id: number;
   username: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber?: number;
   createdAt: Date;
   isActive: boolean;
 };

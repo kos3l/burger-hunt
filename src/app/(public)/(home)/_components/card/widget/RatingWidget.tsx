@@ -11,7 +11,7 @@ function RatingWidget({ rating }: { rating: number }) {
           alt="star-icon"
         />
       </div>
-      <p>{rating}/5</p>
+      <p className="text-base">{rating}/5</p>
     </div>
   );
 }

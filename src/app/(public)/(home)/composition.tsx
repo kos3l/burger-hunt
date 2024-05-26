@@ -1,16 +1,12 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
 import { RestaurantSearchForm } from '@/public-pages/(home)/_components/search-form/RestaurantSearchForm';
-import {
-  restaurantSearchAddressQueryKeys,
-  restaurantSearchLocationQueryKeys,
-} from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
-import { fetchRestaurantByAddress } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantByAddress';
-import { fetchRestaurantByLocation } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantByLocation';
+import { restaurantSearchLocationQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
+import { fetchAllRestaurants } from '@/src/domain/restaurant/service/query-fn/fetchAllRestaurants';
 
 import { RestaurantGrid } from './_components/grid/RestaurantGrid';
 
@@ -23,61 +19,52 @@ function HomeComposition() {
   const [showBestTexture, setShowBestTexture] = useState<boolean>(true);
   const [showClosest, setShowClosest] = useState<boolean>(true);
 
+  const [showByLocation, setShowByLocation] = useState<boolean>(false);
   const [location, setLocation] = useState<GeolocationPosition>();
   const [debouncedAddress] = useDebounce(searchAddress, 1000);
+  const addressToSearch = !showByLocation ? debouncedAddress : undefined;
 
-  const { data: restaurantsByAddress, isFetching: isFetchingByAddres } =
-    useQuery({
-      queryKey: [
-        ...restaurantSearchAddressQueryKeys,
-        debouncedAddress,
+  const { data: restaurants, isFetching } = useQuery({
+    queryKey: [
+      ...restaurantSearchLocationQueryKeys,
+      location?.coords.latitude,
+      location?.coords.longitude,
+      addressToSearch,
+      showTastiest,
+      showPrettiest,
+      showBestTexture,
+      showClosest,
+    ],
+    queryFn: () =>
+      fetchAllRestaurants({
+        latitude: location ? location.coords.latitude : 0,
+        longitude: location ? location.coords.longitude : 0,
+        address: addressToSearch,
         showTastiest,
         showPrettiest,
         showBestTexture,
         showClosest,
-      ],
-      queryFn: () =>
-        fetchRestaurantByAddress({
-          address: debouncedAddress,
-          showTastiest,
-          showPrettiest,
-          showBestTexture,
-          showClosest,
-        }),
-      enabled: !location,
-    });
+      }),
+  });
 
-  const { data: restaurantsByLocation, isFetching: isFetchingByLocation } =
-    useQuery({
-      queryKey: [
-        ...restaurantSearchLocationQueryKeys,
-        location?.coords.latitude,
-        location?.coords.longitude,
-        showTastiest,
-        showPrettiest,
-        showBestTexture,
-        showClosest,
-      ],
-      queryFn: () =>
-        fetchRestaurantByLocation({
-          latitude: location ? location.coords.latitude : 0,
-          longitude: location ? location.coords.longitude : 0,
-          showTastiest,
-          showPrettiest,
-          showBestTexture,
-          showClosest,
-        }),
-      enabled: location !== undefined,
-    });
+  useEffect(() => {
+    if (!location) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => setLocation(position),
+        () => setLocation(undefined),
+      );
+    }
+  }, []);
 
   function handleSearchAddressChange(newAddress: string) {
     setSearchAddress(newAddress);
-    setLocation(undefined);
+    setShowByLocation(false);
   }
 
-  function handleLocationChange(newLocation?: GeolocationPosition) {
+  function handleOnSearchByLocationClick(newLocation?: GeolocationPosition) {
     setLocation(newLocation);
     setSearchAddress(defaultAddress);
+    setShowByLocation(true);
   }
 
   function handleShowTastiestChange(value: boolean) {
@@ -93,13 +80,6 @@ function HomeComposition() {
     setShowClosest(value);
   }
 
-  const searchedRestaurants = location
-    ? restaurantsByLocation
-    : restaurantsByAddress;
-  const isFetchingRestaurants = location
-    ? isFetchingByLocation
-    : isFetchingByAddres;
-
   return (
     <main className="z-20 flex min-h-full grow justify-center">
       <div className="flex w-full max-w-full flex-col gap-3 p-4 lg:flex-row lg:gap-8 lg:p-6 2xl:max-w-[90rem] 2xl:p-8">
@@ -108,8 +88,8 @@ function HomeComposition() {
           handleSearchAddressChange={(newAddress: string) =>
             handleSearchAddressChange(newAddress)
           }
-          handleLocationChange={(newLocation?: GeolocationPosition) =>
-            handleLocationChange(newLocation)
+          handleOnSearchByLocationClick={(newLocation?: GeolocationPosition) =>
+            handleOnSearchByLocationClick(newLocation)
           }
           showTastiest={showTastiest}
           showPrettiest={showPrettiest}
@@ -128,10 +108,7 @@ function HomeComposition() {
             handleShowClosestChange(value)
           }
         />
-        <RestaurantGrid
-          restaurants={searchedRestaurants}
-          isFetching={isFetchingRestaurants}
-        />
+        <RestaurantGrid restaurants={restaurants} isFetching={isFetching} />
       </div>
     </main>
   );
