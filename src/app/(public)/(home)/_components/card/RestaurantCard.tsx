@@ -40,7 +40,9 @@ function RestaurantCard({
           />
         </div>
         <div className="flex h-28 w-full flex-col justify-between gap-2 pt-4">
-          <p className="truncate text-xl font-semibold">{restaurantName}</p>
+          <p className="truncate text-base font-semibold lg:text-xl">
+            {restaurantName}
+          </p>
           <div className="flex w-full items-center justify-between gap-4">
             <RatingWidget rating={restaurant.totalRating} />
             <DistanceWidget distance={formattedDistance} />

@@ -9,7 +9,7 @@ function DistanceWidget({ distance }: { distance: string }) {
         height={15}
         alt="distance-icon"
       />
-      <p>{distance}</p>
+      <p className="text-sm lg:text-base">{distance}</p>
     </div>
   );
 }

@@ -22,9 +22,9 @@ function OpenHoursWidget({ variant }: { variant: 'open' | 'closed' }) {
 
   return (
     <div
-      className={`${tagColor} absolute left-8 top-8 z-10 flex h-8 w-24 items-center justify-center rounded-sm bg-stone-400`}
+      className={`${tagColor} absolute left-8 top-8 z-10 flex h-6 w-20 items-center justify-center rounded-sm bg-stone-400 xl:h-8 xl:w-24`}
     >
-      <p className={`${textColor} text-sm font-semibold`}>{text}</p>
+      <p className={`${textColor} text-xs font-semibold xl:text-sm`}>{text}</p>
     </div>
   );
 }

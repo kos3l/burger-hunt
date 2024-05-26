@@ -15,7 +15,7 @@ function RestaurantGrid({
 }) {
   if (isFetching) {
     return (
-      <div className="grid h-max w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid h-max w-full grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 lg:gap-6 xl:grid-cols-3">
         <RestaurantCardPlaceholder />
         <RestaurantCardPlaceholder />
         <RestaurantCardPlaceholder />
@@ -28,7 +28,7 @@ function RestaurantGrid({
   }
 
   return (
-    <div className="grid h-max w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:w-max">
+    <div className="grid h-max w-full grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 lg:gap-6 xl:grid-cols-3 2xl:w-max">
       {restaurants.map((restaurant) => {
         return (
           <RestaurantCard
