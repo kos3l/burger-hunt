@@ -1,4 +1,9 @@
 const restaurantSearchAddressQueryKeys = ['restaurant', 'search', 'address'];
 const restaurantSearchLocationQueryKeys = ['restaurant', 'search', 'location'];
+const restaurantByIdQueryKeys = ['restaurant'];
 
-export { restaurantSearchAddressQueryKeys, restaurantSearchLocationQueryKeys };
+export {
+  restaurantByIdQueryKeys,
+  restaurantSearchAddressQueryKeys,
+  restaurantSearchLocationQueryKeys,
+};

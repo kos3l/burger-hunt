@@ -24,7 +24,7 @@ function RestaurantCard({
     : 'closed';
 
   return (
-    <Link href="/">
+    <Link href={`/restaurant/${restaurant.id}`}>
       <div className="relative col-span-1 w-full rounded-sm border-2 border-stone-800 bg-stone-100 p-4">
         <OpenHoursWidget variant={openHoursTagVariant} />
         <div className="relative aspect-square w-full overflow-hidden rounded-md">
