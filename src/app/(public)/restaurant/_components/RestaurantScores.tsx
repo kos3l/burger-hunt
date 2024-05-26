@@ -19,8 +19,7 @@ function RestaurantScores({
   const formattedDistance = new Intl.NumberFormat('en-UK', {
     style: 'unit',
     unitDisplay: 'short',
-    unit: 'kilometer',
-    maximumFractionDigits: 1,
+    unit: 'meter',
   }).format(distance);
 
   return (

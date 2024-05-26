@@ -16,7 +16,7 @@ function RestaurantCard({
   const formattedDistance = new Intl.NumberFormat('en-UK', {
     style: 'unit',
     unitDisplay: 'short',
-    unit: 'kilometer',
+    unit: 'meter',
   }).format(restaurant.distance);
 
   const openHoursTagVariant = restaurant.openingHours.openNow
