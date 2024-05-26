@@ -6,6 +6,8 @@ import type { Metadata } from 'next';
 import ReactQueryProvider from '@/context/react-query-provider/ReactQueryProvider';
 import { RobotoMono, Rubik } from '@/resources/fonts';
 
+import SessionWrapper from './_context/next-auth/SessionProvided';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,11 +26,12 @@ export default function RootLayout({
           id="noise"
           className="pointer-events-none fixed z-30 size-full opacity-70"
         />
-
-        <ReactQueryProvider>
-          <ReactQueryDevtools initialIsOpen={false} />
-          {children}
-        </ReactQueryProvider>
+        <SessionWrapper>
+          <ReactQueryProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+            {children}
+          </ReactQueryProvider>
+        </SessionWrapper>
       </body>
     </html>
   );

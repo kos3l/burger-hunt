@@ -1,19 +1,23 @@
 'use client';
 
+/* eslint-disable no-nested-ternary */
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
 import { restaurantByIdQueryKeys } from '@/src/domain/restaurant/service/keys/RestaurantQueryKeys';
 import { fetchRestaurantById } from '@/src/domain/restaurant/service/query-fn/fetchRestaurantById';
 import { reviewQueryKeys } from '@/src/domain/review/service/keys/ReviewQueryKeys';
 import { fetchReviewByRestaurantId } from '@/src/domain/review/service/query-fn/fetchReviewByRestaurantId';
 
+import { NavigationButton } from '../../_components/navigation/_elements/NavigationButton';
 import { RestaurantAddress } from '../_components/RestaurantAddress';
 import { RestaurantOpeningHours } from '../_components/RestaurantOpeningHours';
 import { RestaurantScores } from '../_components/RestaurantScores';
 import { RestaurantWebsite } from '../_components/RestaurantWebsite';
 
 function RestaurantComposition({ id }: { id: string }) {
+  const { data: session } = useSession();
   const { data: restaurant, isFetching } = useQuery({
     queryKey: [...restaurantByIdQueryKeys, id],
     queryFn: () => fetchRestaurantById({ id }),
@@ -25,13 +29,27 @@ function RestaurantComposition({ id }: { id: string }) {
   });
 
   if (!restaurant) {
-    return <p>empty!!!!</p>;
+    return (
+      <div className="w-full">
+        <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
+          <p className="text-sm font-semibold md:text-xl">
+            Sorry! No restaurant found
+          </p>
+        </div>
+      </div>
+    );
   }
 
   if (isFetching) {
-    return <p>Loading!!!!</p>;
+    return (
+      <div className="w-full">
+        <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
+          <p className="text-sm font-semibold md:text-xl">Loading..</p>
+        </div>
+      </div>
+    );
   }
-  console.log(isFetchingReviews);
+
   const restaurantImage = restaurant.thumbnail
     ? restaurant.thumbnail.url
     : '/images/placeholder-restaurant.jpg';
@@ -74,8 +92,17 @@ function RestaurantComposition({ id }: { id: string }) {
           </div>
         </div>
         <div className="flex h-max grow flex-col gap-4 rounded-sm border-2 border-stone-800 bg-stone-100 p-4">
-          <p className="font-bold">{reviewsCardtitle}</p>
-          {reviews && reviews.length > 0 ? (
+          <div className="flex w-full justify-between gap-4">
+            <p className="font-bold">{reviewsCardtitle}</p>
+            {session && <NavigationButton onClick={() => {}} title="Add" />}
+          </div>
+          {isFetchingReviews ? (
+            <div className="w-full">
+              <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
+                <p className="text-sm font-semibold md:text-xl">Loading...</p>
+              </div>
+            </div>
+          ) : reviews && reviews.length > 0 ? (
             <div className="flex w-full flex-col gap-4">
               {reviews.map((review) => (
                 <div
@@ -117,7 +144,13 @@ function RestaurantComposition({ id }: { id: string }) {
               ))}
             </div>
           ) : (
-            <p>No reviews yet...</p>
+            <div className="w-full">
+              <div className="flex h-32 items-center rounded-sm border-2 border-stone-900 bg-stone-100 px-8 sm:h-24">
+                <p className="text-sm font-semibold md:text-xl">
+                  No reviews yet..
+                </p>
+              </div>
+            </div>
           )}
         </div>
       </div>
